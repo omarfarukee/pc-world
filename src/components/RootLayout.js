@@ -1,15 +1,20 @@
 import Link from "next/link";
-
+import { FaBeer } from "react-icons/fa";
 const RootLayout = ({ children }) => {
   return (
     <div className="flex justify-center">
       <div className="w-11/12">
         <div className="navbar bg-base-100 border rounded">
+          <div className="">
+            <Link href="/pcBuilder">
+              <button className="btn btn-ghost">PC_BUILD</button>
+            </Link>
+          </div>
           <div className="navbar-start">
             <div className="dropdown">
               <div className="dropdown dropdown-hover ">
                 <label tabIndex={0} className="btn m-1">
-                  Categories
+                  Categories<FaBeer></FaBeer>
                 </label>
                 <ul
                   tabIndex={0}
@@ -17,17 +22,26 @@ const RootLayout = ({ children }) => {
                 >
                   <Link href="/about">
                     <li>
-                      <p>Item 1</p>
+                      <p>CPU / Processor</p>
                     </li>
                   </Link>
                   <li>
-                    <a>Item 2</a>
+                    <p>Motherboard</p>
                   </li>
                   <li>
-                    <a>Item 2</a>
+                    <p>RAM</p>
                   </li>
                   <li>
-                    <a>Item 2</a>
+                    <p>Power Supply Unit</p>
+                  </li>
+                  <li>
+                    <p>Storage Device</p>
+                  </li>
+                  <li>
+                    <p>Monitor</p>
+                  </li>
+                  <li>
+                    <p>Others</p>
                   </li>
                 </ul>
               </div>
