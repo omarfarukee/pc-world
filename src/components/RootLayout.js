@@ -1,6 +1,14 @@
+/* eslint-disable @next/next/no-img-element */
+/* eslint-disable jsx-a11y/alt-text */
+import { useGetCategoryQuery } from "@/redux/api/api";
 import Link from "next/link";
-import { FaBeer } from "react-icons/fa";
+import { FaBeer, FaUserCircle } from "react-icons/fa";
+import { useSession, signOut } from "next-auth/react";
 const RootLayout = ({ children }) => {
+  const { data: session } = useSession();
+  console.log(session?.user);
+  const { data, isError, isLoading, error } = useGetCategoryQuery();
+  console.log(data?.data);
   return (
     <div className="flex justify-center">
       <div className="w-11/12">
@@ -20,29 +28,15 @@ const RootLayout = ({ children }) => {
                   tabIndex={0}
                   className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52 border"
                 >
-                  <Link href="/about">
-                    <li>
-                      <p>CPU / Processor</p>
-                    </li>
-                  </Link>
-                  <li>
-                    <p>Motherboard</p>
-                  </li>
-                  <li>
-                    <p>RAM</p>
-                  </li>
-                  <li>
-                    <p>Power Supply Unit</p>
-                  </li>
-                  <li>
-                    <p>Storage Device</p>
-                  </li>
-                  <li>
-                    <p>Monitor</p>
-                  </li>
-                  <li>
-                    <p>Others</p>
-                  </li>
+                  {data?.data?.map((d) => (
+                    <>
+                      <Link href={`/category/${d?._id}`}>
+                        <li>
+                          <p>{d?.categoryName}</p>
+                        </li>
+                      </Link>
+                    </>
+                  ))}
                 </ul>
               </div>
             </div>
@@ -53,41 +47,38 @@ const RootLayout = ({ children }) => {
             </div>
           </Link>
           <div className="navbar-end">
-            <button className="btn btn-ghost btn-circle">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-5 w-5"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
+            <div className="dropdown dropdown-bottom dropdown-hover dropdown-end">
+              <label tabIndex={0} className="btn m-1 btn-circle">
+                {session?.user?.image ? (
+                  <img className="rounded-full " src={session?.user?.image} />
+                ) : (
+                  <FaUserCircle className="text-3xl"></FaUserCircle>
+                )}
+              </label>
+              <ul
+                tabIndex={0}
+                className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52 border"
               >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
-                />
-              </svg>
-            </button>
-            <button className="btn btn-ghost btn-circle">
-              <div className="indicator">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="h-5 w-5"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"
-                  />
-                </svg>
-                <span className="badge badge-xs badge-primary indicator-item"></span>
-              </div>
-            </button>
+                {!session?.user ? (
+                  <>
+                    <Link href="/login">
+                      <li>
+                        <p>Login</p>
+                      </li>
+                    </Link>
+                    <li>
+                      <p>Sign-up</p>
+                    </li>{" "}
+                  </>
+                ) : (
+                  <li>
+                    <p onClick={() => signOut()} className="btn-error">
+                      Log-out
+                    </p>
+                  </li>
+                )}
+              </ul>
+            </div>
           </div>
         </div>
         {children}

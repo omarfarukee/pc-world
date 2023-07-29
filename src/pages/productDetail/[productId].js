@@ -9,16 +9,22 @@ const ProductDetail = ({ product }) => {
         <figure>
           <img className="w-96 h-full" src={product?.image} alt="Album" />
         </figure>
-        <div className="card-body">
+        <div className="card-body lg:w-96">
           <h2 className="card-title">{product?.productName}</h2>
           <p>Category- {product?.category}</p>
+          <p>Description- {product?.description}</p>
           <p>Price- {product?.price} ৳-BDT</p>
           <p>Status- {product?.status}</p>
           <p>Category- {product?.category}</p>
           <p className="flex items-center">
-            Rating- {product?.rating}{" "}
+            Individual Rating- {product?.individualRating}{" "}
             <FaStar className="ml-2 text-yellow-200"></FaStar>
           </p>
+          <p className="flex items-center">
+            Average Rating- {product?.averageRating}{" "}
+            <FaStar className="ml-2 text-yellow-200"></FaStar>
+          </p>
+          <p>Reviews- {product?.reviews}</p>
           <div className="card-actions justify-end">
             <button className="btn btn-primary">Listen</button>
           </div>

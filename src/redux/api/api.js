@@ -7,7 +7,10 @@ export const apiSlice = createApi({
     getFeaturedProducts: builder.query({
       query: () => "/featuredProducts",
     }),
+    getCategory: builder.query({
+      query: () => "/category",
+    }),
   }),
 });
 
-export const { useGetFeaturedProductsQuery } = apiSlice;
+export const { useGetFeaturedProductsQuery, useGetCategoryQuery } = apiSlice;
