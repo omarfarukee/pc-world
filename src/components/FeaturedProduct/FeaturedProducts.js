@@ -18,7 +18,7 @@ const FeaturedProducts = ({ allProducts }) => {
   }, [allProducts]);
 
   return (
-    <div className="mb-10">
+    <div className="mb-10 text-white">
       <div className="flex justify-center">
         <h1 className="text-3xl mb-8 border-b-4">Featured product</h1>
       </div>
@@ -43,7 +43,7 @@ const FeaturedProducts = ({ allProducts }) => {
               </p>
               <div className="card-actions justify-end">
                 <Link href={`/productDetail/${product?._id}`}>
-                  <button className="btn btn-info">Enter Card</button>
+                  <button className="btn btn-info">Details</button>
                 </Link>
               </div>
             </div>

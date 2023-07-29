@@ -6,8 +6,8 @@ import { FaStar } from "react-icons/fa";
 
 const CategoryPage = ({ category }) => {
   return (
-    <div className="mt-10">
-      <div className="grid lg:grid-cols-3 grid-cols-1 gap-8">
+    <div className="mt-10 text-white">
+      <div className="grid lg:grid-cols-3 grid-cols-1 gap-8 ">
         {category?.map((cat) => (
           <div
             key={cat?._id}
@@ -71,7 +71,7 @@ export const getStaticProps = async (context) => {
     `http://localhost:5000/category/${params?.categoryId}`
   );
   const data = await res.json();
-  console.log(data);
+  // console.log(data);
   return {
     props: {
       category: data,

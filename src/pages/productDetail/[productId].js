@@ -1,11 +1,12 @@
+/* eslint-disable @next/next/no-img-element */
 import RootLayout from "@/components/RootLayout";
 import React from "react";
 import { FaStar } from "react-icons/fa";
 
 const ProductDetail = ({ product }) => {
   return (
-    <div className="mt-20">
-      <div className="card lg:card-side bg-base-100 shadow-xl border">
+    <div className="mt-20 text-white p-5">
+      <div className="card lg:card-side bg-base-100 shadow-xl border lg:w-full w-96 ml-3 lg:ml-0">
         <figure>
           <img className="w-96 h-full" src={product?.image} alt="Album" />
         </figure>
@@ -25,9 +26,6 @@ const ProductDetail = ({ product }) => {
             <FaStar className="ml-2 text-yellow-200"></FaStar>
           </p>
           <p>Reviews- {product?.reviews}</p>
-          <div className="card-actions justify-end">
-            <button className="btn btn-primary">Listen</button>
-          </div>
         </div>
       </div>
     </div>
@@ -67,7 +65,7 @@ export const getStaticProps = async (context) => {
     `http://localhost:5000/featuredProducts/${params?.productId}`
   );
   const data = await res.json();
-  console.log(data);
+  // console.log(data);
   return {
     props: {
       product: data,

@@ -6,7 +6,7 @@ const HomePage = ({ allProducts }) => {
   const { data, isError, isLoading, error } = useGetFeaturedProductsQuery();
   console.log(data);
   return (
-    <div>
+    <div className="text-white">
       <h1>this is pc home page</h1>
       <FeaturedProducts allProducts={allProducts} />
     </div>

@@ -5,8 +5,8 @@ import { FaGithub } from "react-icons/fa";
 
 const LoginPage = () => {
   return (
-    <div>
-      <div className="hero min-h-screen bg-base-200">
+    <div className="flex justify-center">
+      {/* <div className="hero min-h-screen bg-base-200">
         <div className="hero-content flex-col lg:flex-row-reverse">
           <div className="text-center lg:text-left">
             <h1 className="text-5xl font-bold">Login now!</h1>
@@ -47,7 +47,7 @@ const LoginPage = () => {
                   className="btn btn-info "
                   onClick={() =>
                     signIn("github", {
-                      callbackUrl: "/",
+                      callbackUrl: "http://localhost:3000/",
                     })
                   }
                 >
@@ -56,6 +56,20 @@ const LoginPage = () => {
               </div>
             </div>
           </div>
+        </div>
+      </div> */}
+      <div className="mt-48 p-14 bg-black  rounded-2xl">
+        <div className="form-control mt-6">
+          <button
+            className="btn btn-info text-2xl "
+            onClick={() =>
+              signIn("github", {
+                callbackUrl: "http://localhost:3000/",
+              })
+            }
+          >
+            Sign-up with GitHub <FaGithub></FaGithub>
+          </button>
         </div>
       </div>
     </div>
