@@ -1,5 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
+import Link from "next/link";
 import { useEffect, useState } from "react";
+import { FaStar } from "react-icons/fa";
 
 const FeaturedProducts = ({ allProducts }) => {
   const [randomProducts, setRandomProducts] = useState([]);
@@ -24,17 +26,25 @@ border-b-4"
       <div className="grid lg:grid-cols-3 grid-cols-1 gap-8">
         {randomProducts?.map((product) => (
           <div
-            key={product.productName}
-            className="card w-96 h-96 bg-base-100 shadow-xl border transition duration-300 transform hover:scale-105 hover:shadow-black"
+            key={product?.productName}
+            className="card w-96 bg-base-100 shadow-xl border transition duration-300 transform hover:scale-105 hover:shadow-black"
           >
             <figure>
-              <img src={product.image} alt="" />
+              <img className="h-60 w-full" src={product?.image} alt="" />
             </figure>
             <div className="card-body">
-              <h2 className="card-title">{product.productName}</h2>
-              <p>If a dog chews shoes, whose shoes does he choose?</p>
+              <h2 className="card-title font-bold">{product?.productName}</h2>
+              <p>Category- {product?.category}</p>
+              <p>Price- {product?.price} ৳-BDT</p>
+              <p>Status- {product?.status}</p>
+              <p className="flex items-center font-bold">
+                Rating- {product?.rating}{" "}
+                <FaStar className="ml-2 text-yellow-200"></FaStar>
+              </p>
               <div className="card-actions justify-end">
-                <button className="btn btn-primary">Buy Now</button>
+                <Link href={`/productDetail/${product?._id}`}>
+                  <button className="btn btn-info">Enter Card</button>
+                </Link>
               </div>
             </div>
           </div>
