@@ -8,13 +8,13 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import auth from "@/firebase/firebase.auth";
 const RootLayout = ({ children }) => {
   const { data: session } = useSession();
-  console.log(session?.user);
+  // console.log(session?.user);
 
   const [user, loading, error] = useAuthState(auth);
-  console.log(user?.email);
+  // console.log(user?.email);
 
   const { data, isError, isLoading } = useGetCategoryQuery();
-  console.log(data?.data);
+  // console.log(data?.data);
 
   return (
     <div className="flex justify-center">
