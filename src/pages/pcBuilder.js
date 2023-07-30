@@ -3,7 +3,7 @@
 import RootLayout from "@/components/RootLayout";
 import { useGetCategoryQuery } from "@/redux/api/api";
 import Link from "next/link";
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 const PcBuilder = () => {
   const { data, isError, isLoading } = useGetCategoryQuery();
@@ -14,6 +14,20 @@ const PcBuilder = () => {
   const id4 = data?.data?.[4]?._id;
   const id5 = data?.data?.[5]?._id;
   const id6 = data?.data?.[6]?._id;
+
+  const [products, setProducts] = useState([]);
+
+  useEffect(() => {
+    fetch("http://localhost:5000/builderProduct")
+      .then((response) => response.json())
+      .then((data) => setProducts(data))
+      .catch((error) => console.error("Error fetching data:", error));
+  }, []);
+
+  products?.data?.map((p) => {
+    const category_id = p?.category_id;
+    console.log(category_id);
+  });
 
   return (
     <div className=" mt-10">
@@ -28,6 +42,25 @@ const PcBuilder = () => {
               className="shadow-md rounded-md"
               src="https://img.icons8.com/?size=1x&id=FZIiyQbXf6Zd&format=png"
             />
+          </div>
+          <div>
+            {products?.data?.map((p) => (
+              <>
+                {p?.category_id === id0 ? (
+                  <div className="flex items-center bg-gray-300 p-5 rounded-lg">
+                    <div>
+                      <img className="w-28 rounded-2xl mr-5" src={p?.image} />
+                    </div>
+                    <div>
+                      <p>{p?.productName}</p>
+                      <p>Price- {p?.price} BDT</p>
+                    </div>
+                  </div>
+                ) : (
+                  <></>
+                )}
+              </>
+            ))}
           </div>
           <div>
             <Link href={`/choseId/${id0}`}>
