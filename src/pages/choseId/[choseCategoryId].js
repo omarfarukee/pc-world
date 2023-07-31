@@ -83,11 +83,13 @@
 /* eslint-disable jsx-a11y/alt-text */
 /* eslint-disable @next/next/no-img-element */
 import RootLayout from "@/components/RootLayout";
+import { useRouter } from "next/router";
 import React from "react";
 import { toast } from "react-hot-toast";
 import { FaStar } from "react-icons/fa";
 
 const ChosePage = ({ category }) => {
+  const router = useRouter();
   const handleAddToBuild = (selectedProduct) => {
     fetch("http://localhost:5000/builderProduct", {
       method: "POST",
@@ -100,6 +102,7 @@ const ChosePage = ({ category }) => {
       .then((data) => {
         if (data) {
           toast.success("added");
+          router.push("/pcBuilder");
         }
         console.log(data);
       })

@@ -21,7 +21,7 @@ HomePage.getLayout = function getLayout(page) {
 export const getStaticProps = async () => {
   const res = await fetch("http://localhost:5000/featuredProducts");
   const data = await res.json();
-  console.log(data);
+  // console.log(data);
   return {
     props: {
       allProducts: data.data,

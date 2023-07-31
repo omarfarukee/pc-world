@@ -73,8 +73,8 @@ const RootLayout = ({ children }) => {
                 {!session?.user | !user?.email ? (
                   <>
                     <Link href="/login">
-                      <li>
-                        <p>Login</p>
+                      <li className="bg-black rounded-lg text-white">
+                        <p>Sign-in</p>
                       </li>
                     </Link>
                   </>
