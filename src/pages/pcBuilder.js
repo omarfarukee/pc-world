@@ -105,7 +105,7 @@ const PcBuilder = () => {
                 {p?.userEmail === session?.user?.email &&
                 p?.category_id === id0 ? (
                   <div className="flex bg-gray-300  rounded-lg p-2">
-                    <div className="flex items-center p-5">
+                    <div className="lg:flex items-center p-5">
                       <div>
                         <img className="w-28 rounded-2xl mr-5" src={p?.image} />
                       </div>
@@ -116,7 +116,7 @@ const PcBuilder = () => {
                     </div>
                     <button
                       onClick={() => handleDelete(p?._id)}
-                      className="btn btn-ghost bg-slate-500 ml-10 border"
+                      className="btn btn-ghost bg-slate-500 ml-20 border"
                     >
                       x
                     </button>
@@ -152,7 +152,7 @@ const PcBuilder = () => {
                 {p?.userEmail === session?.user?.email &&
                 p?.category_id === id1 ? (
                   <div className="flex bg-gray-300  rounded-lg p-2">
-                    <div className="flex items-center p-5">
+                    <div className="lg:flex items-center p-5">
                       <div>
                         <img className="w-28 rounded-2xl mr-5" src={p?.image} />
                       </div>
@@ -163,7 +163,7 @@ const PcBuilder = () => {
                     </div>
                     <button
                       onClick={() => handleDelete(p?._id)}
-                      className="btn btn-ghost bg-slate-500 ml-10"
+                      className="btn btn-ghost bg-slate-500 ml-20"
                     >
                       x
                     </button>
@@ -199,7 +199,7 @@ const PcBuilder = () => {
                 {p?.userEmail === session?.user?.email &&
                 p?.category_id === id2 ? (
                   <div className="flex bg-gray-300  rounded-lg p-2">
-                    <div className="flex items-center p-5">
+                    <div className="lg:flex items-center p-5">
                       <div>
                         <img className="w-28 rounded-2xl mr-5" src={p?.image} />
                       </div>
@@ -210,7 +210,7 @@ const PcBuilder = () => {
                     </div>
                     <button
                       onClick={() => handleDelete(p?._id)}
-                      className="btn btn-ghost bg-slate-500 ml-10"
+                      className="btn btn-ghost bg-slate-500 ml-20"
                     >
                       x
                     </button>
@@ -246,7 +246,7 @@ const PcBuilder = () => {
                 {p?.userEmail === session?.user?.email &&
                 p?.category_id === id3 ? (
                   <div className="flex bg-gray-300  rounded-lg p-2">
-                    <div className="flex items-center p-5">
+                    <div className="lg:flex items-center p-5">
                       <div>
                         <img className="w-28 rounded-2xl mr-5" src={p?.image} />
                       </div>
@@ -257,7 +257,7 @@ const PcBuilder = () => {
                     </div>
                     <button
                       onClick={() => handleDelete(p?._id)}
-                      className="btn btn-ghost bg-slate-500 ml-10"
+                      className="btn btn-ghost bg-slate-500 ml-20"
                     >
                       x
                     </button>
@@ -293,7 +293,7 @@ const PcBuilder = () => {
                 {p?.userEmail === session?.user?.email &&
                 p?.category_id === id4 ? (
                   <div className="flex bg-gray-300  rounded-lg p-2">
-                    <div className="flex items-center p-5">
+                    <div className="lg:flex items-center p-5">
                       <div>
                         <img className="w-28 rounded-2xl mr-5" src={p?.image} />
                       </div>
@@ -304,7 +304,7 @@ const PcBuilder = () => {
                     </div>
                     <button
                       onClick={() => handleDelete(p?._id)}
-                      className="btn btn-ghost bg-slate-500 ml-10"
+                      className="btn btn-ghost bg-slate-500 ml-20"
                     >
                       x
                     </button>
@@ -340,7 +340,7 @@ const PcBuilder = () => {
                 {p?.userEmail === session?.user?.email &&
                 p?.category_id === id5 ? (
                   <div className="flex bg-gray-300  rounded-lg p-2">
-                    <div className="flex items-center p-5">
+                    <div className="lg:flex items-center p-5">
                       <div>
                         <img className="w-28 rounded-2xl mr-5" src={p?.image} />
                       </div>
@@ -351,7 +351,7 @@ const PcBuilder = () => {
                     </div>
                     <button
                       onClick={() => handleDelete(p?._id)}
-                      className="btn btn-ghost bg-slate-500 ml-10"
+                      className="btn btn-ghost bg-slate-500 ml-20"
                     >
                       x
                     </button>
@@ -387,7 +387,7 @@ const PcBuilder = () => {
                 {p?.userEmail === session?.user?.email &&
                 p?.category_id === id6 ? (
                   <div className="flex bg-gray-300  rounded-lg p-2">
-                    <div className="flex items-center p-5">
+                    <div className="lg:flex items-center p-5">
                       <div>
                         <img className="w-28 rounded-2xl mr-5" src={p?.image} />
                       </div>
@@ -398,7 +398,7 @@ const PcBuilder = () => {
                     </div>
                     <button
                       onClick={() => handleDelete(p?._id)}
-                      className="btn btn-ghost bg-slate-500 ml-10"
+                      className="btn btn-ghost bg-slate-500 ml-20"
                     >
                       x
                     </button>

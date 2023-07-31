@@ -1,3 +1,5 @@
+/* eslint-disable jsx-a11y/alt-text */
+/* eslint-disable @next/next/no-img-element */
 import RootLayout from "@/components/RootLayout";
 import { useSession } from "next-auth/react";
 
@@ -6,6 +8,7 @@ import React from "react";
 
 import { toast } from "react-hot-toast";
 import { FaStar } from "react-icons/fa";
+import { global } from "styled-jsx/css";
 
 const ChosePage = ({ category }) => {
   const { data: session } = useSession();
@@ -41,10 +44,13 @@ const ChosePage = ({ category }) => {
             key={cat?._id}
             className="mb-5 rounded-2xl bg-base-100 shadow-xl border transition duration-300 transform hover:scale-105 hover:shadow-black"
           >
-            <div className="flex items-center justify-between bg-black rounded-2xl">
-              <div className="flex">
-                <img className="h-36 rounded-2xl" src={cat?.image} />
-                <div className="ml-2 mt-2">
+            <div className="lg:flex  items-center justify-between bg-black rounded-2xl">
+              <div className="lg:flex lg:chose-card w-full">
+                <img
+                  className="h-48 lg:h-52 rounded-2xl w-96"
+                  src={cat?.image}
+                />
+                <div className="ml-2 mt-2 lg:p-0 p-3">
                   <h1 className="text-2xl">{cat?.productName}</h1>
                   <p>category- {cat?.category}</p>
                   <p>Price- {cat?.price} ৳-BDT</p>
@@ -56,7 +62,7 @@ const ChosePage = ({ category }) => {
                 </div>
               </div>
               <button
-                className="btn btn-info mr-10 hover:bg-slate-500"
+                className="btn btn-info lg:mr-10 hover:bg-slate-500 m-2"
                 onClick={() => handleAddToBuild(cat)}
               >
                 Add to build

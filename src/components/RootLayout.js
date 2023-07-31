@@ -18,9 +18,9 @@ const RootLayout = ({ children }) => {
   // console.log(data?.data);
 
   return (
-    <div className="flex justify-center border">
+    <div className="flex justify-center">
       <div className="lg:w-11/12 w-full">
-        <div className="navbar bg-black rounded border">
+        <div className="navbar bg-black rounded ">
           <div className="">
             <Link href="/pcBuilder">
               <button className="btn btn-ghost sm:block hidden text-white">
@@ -28,7 +28,7 @@ const RootLayout = ({ children }) => {
               </button>
             </Link>
           </div>
-          <div className="navbar-start border st">
+          <div className="navbar-start st">
             <div className="dropdown">
               <div className="dropdown dropdown-hover ">
                 <label tabIndex={0} className="btn m-1 text-white">
@@ -55,13 +55,13 @@ const RootLayout = ({ children }) => {
           </div>
 
           <Link href="/">
-            <div className="navbar-center border w-20 mr-5 hidden lg:block">
-              <p className="btn btn-ghost normal-case text-xl mr-20 text-white">
+            <div className="navbar-center ml-16 hidden lg:block">
+              <p className="btn btn-ghost normal-case text-xl  text-white">
                 PC_WORLD
               </p>
             </div>
           </Link>
-          <div className="navbar-end border">
+          <div className="navbar-end">
             <div className="dropdown dropdown-bottom dropdown-hover dropdown-end ">
               <label tabIndex={0} className="btn m-1 btn-circle">
                 {session?.user?.image ? (
