@@ -6,7 +6,7 @@ import { FaStar } from "react-icons/fa";
 const ProductDetail = ({ product }) => {
   return (
     <div className="mt-20 text-white p-5">
-      <div className="card lg:card-side bg-base-100 shadow-xl border lg:w-full w-96 ml-3 lg:ml-0">
+      <div className="card lg:card-side bg-base-100 shadow-xl border lg:w-full ml-0 lg:ml-0">
         <figure>
           <img className="w-96 h-full" src={product?.image} alt="Album" />
         </figure>
@@ -39,7 +39,9 @@ ProductDetail.getLayout = function getLayout(page) {
 };
 
 export const getStaticPaths = async () => {
-  const res = await fetch(`http://localhost:5000/featuredProducts`);
+  const res = await fetch(
+    `https://pc-world-server.vercel.app/featuredProducts`
+  );
   const products = await res.json();
 
   if (!Array.isArray(products)) {
@@ -62,7 +64,7 @@ export const getStaticPaths = async () => {
 export const getStaticProps = async (context) => {
   const { params } = context;
   const res = await fetch(
-    `http://localhost:5000/featuredProducts/${params?.productId}`
+    `https://pc-world-server.vercel.app/featuredProducts/${params?.productId}`
   );
   const data = await res.json();
   // console.log(data);

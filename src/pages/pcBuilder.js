@@ -2,6 +2,7 @@
 /* eslint-disable @next/next/no-img-element */
 import RootLayout from "@/components/RootLayout";
 import { useGetCategoryQuery } from "@/redux/api/api";
+import { useSession } from "next-auth/react";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
 
@@ -18,8 +19,10 @@ const PcBuilder = () => {
   // -----------------------------------------------------
   const [products, setProducts] = useState([]);
 
+  const { data: session } = useSession();
+
   useEffect(() => {
-    fetch("http://localhost:5000/builderProduct")
+    fetch("https://pc-world-server.vercel.app/builderProduct")
       .then((response) => response.json())
       .then((data) => setProducts(data))
       .catch((error) => console.error("Error fetching data:", error));
@@ -31,43 +34,43 @@ const PcBuilder = () => {
 
   // ------------------------------
   const foundPrice0 = products?.data?.some(
-    (p) => p?.category_id === id0 && p?.price
+    (p) => p?.category_id === id0 && p?.userEmail === session?.user?.email
   );
   const choseLink0 = `/choseId/${id0}`;
 
   const foundPrice1 = products?.data?.some(
-    (p) => p?.category_id === id1 && p?.price
+    (p) => p?.category_id === id1 && p?.userEmail === session?.user?.email
   );
   const choseLink1 = `/choseId/${id1}`;
 
   const foundPrice2 = products?.data?.some(
-    (p) => p?.category_id === id2 && p?.price
+    (p) => p?.category_id === id2 && p?.userEmail === session?.user?.email
   );
   const choseLink2 = `/choseId/${id2}`;
 
   const foundPrice3 = products?.data?.some(
-    (p) => p?.category_id === id3 && p?.price
+    (p) => p?.category_id === id3 && p?.userEmail === session?.user?.email
   );
   const choseLink3 = `/choseId/${id3}`;
 
   const foundPrice4 = products?.data?.some(
-    (p) => p?.category_id === id4 && p?.price
+    (p) => p?.category_id === id4 && p?.userEmail === session?.user?.email
   );
   const choseLink4 = `/choseId/${id4}`;
 
   const foundPrice5 = products?.data?.some(
-    (p) => p?.category_id === id5 && p?.price
+    (p) => p?.category_id === id5 && p?.userEmail === session?.user?.email
   );
   const choseLink5 = `/choseId/${id5}`;
 
   const foundPrice6 = products?.data?.some(
-    (p) => p?.category_id === id6 && p?.price
+    (p) => p?.category_id === id6 && p?.userEmail === session?.user?.email
   );
   const choseLink6 = `/choseId/${id6}`;
   // --------------------------------
 
   const handleDelete = (productId) => {
-    fetch(`http://localhost:5000/builderProduct/${productId}`, {
+    fetch(`https://pc-world-server.vercel.app/builderProduct/${productId}`, {
       method: "DELETE",
     })
       .then((response) => response.json())
@@ -88,8 +91,8 @@ const PcBuilder = () => {
         <h1>build your pc</h1>
       </div>
       <div className="text-black">
-        <div className="border p-8 rounded-lg bg-white flex items-center justify-between mb-5">
-          <div>
+        <div className="border p-8 rounded-lg bg-white grid lg:grid-cols-3 grid-cols-1 w-11/12 lg:w-full ml-4 lg:ml-0 items-center mb-5">
+          <div className=" mb-3 lg:mb-0">
             <p>CPU / Processor</p>
             <img
               className="shadow-md rounded-md"
@@ -99,7 +102,8 @@ const PcBuilder = () => {
           <div>
             {products?.data?.map((p) => (
               <>
-                {p?.category_id === id0 ? (
+                {p?.userEmail === session?.user?.email &&
+                p?.category_id === id0 ? (
                   <div className="flex bg-gray-300  rounded-lg p-2">
                     <div className="flex items-center p-5">
                       <div>
@@ -112,7 +116,7 @@ const PcBuilder = () => {
                     </div>
                     <button
                       onClick={() => handleDelete(p?._id)}
-                      className="btn btn-ghost bg-slate-500"
+                      className="btn btn-ghost bg-slate-500 ml-10 border"
                     >
                       x
                     </button>
@@ -125,14 +129,17 @@ const PcBuilder = () => {
           </div>
           <div>
             <Link href={foundPrice0 ? "" : choseLink0}>
-              <button className="btn btn-outline" disabled={foundPrice0}>
+              <button
+                className="btn btn-outline lg:ml-80 mt-5 lg:mt-0"
+                disabled={foundPrice0}
+              >
                 Chose
               </button>
             </Link>
           </div>
         </div>
-        <div className="border p-8 rounded-lg bg-white flex items-center justify-between mb-5">
-          <div>
+        <div className="border p-8 rounded-lg bg-white grid lg:grid-cols-3 grid-cols-1 w-11/12 lg:w-full ml-4 lg:ml-0 items-center mb-5">
+          <div className="mb-3 lg:mb-0">
             <p>Motherboard</p>
             <img
               className="shadow-md rounded-md"
@@ -142,7 +149,8 @@ const PcBuilder = () => {
           <div>
             {products?.data?.map((p) => (
               <>
-                {p?.category_id === id1 ? (
+                {p?.userEmail === session?.user?.email &&
+                p?.category_id === id1 ? (
                   <div className="flex bg-gray-300  rounded-lg p-2">
                     <div className="flex items-center p-5">
                       <div>
@@ -155,7 +163,7 @@ const PcBuilder = () => {
                     </div>
                     <button
                       onClick={() => handleDelete(p?._id)}
-                      className="btn btn-ghost bg-slate-500"
+                      className="btn btn-ghost bg-slate-500 ml-10"
                     >
                       x
                     </button>
@@ -168,14 +176,17 @@ const PcBuilder = () => {
           </div>
           <div>
             <Link href={foundPrice1 ? "" : choseLink1}>
-              <button className="btn btn-outline" disabled={foundPrice1}>
+              <button
+                className="btn btn-outline lg:ml-80 mt-5 lg:mt-0"
+                disabled={foundPrice1}
+              >
                 Chose
               </button>
             </Link>
           </div>
         </div>
-        <div className="border p-8 rounded-lg bg-white flex items-center justify-between  mb-5">
-          <div>
+        <div className="border p-8 rounded-lg bg-white grid lg:grid-cols-3 grid-cols-1 w-11/12 lg:w-full ml-4 lg:ml-0 items-center mb-5">
+          <div className="mb-3 lg:mb-0">
             <p>RAM</p>
             <img
               className="shadow-md rounded-md"
@@ -185,7 +196,8 @@ const PcBuilder = () => {
           <div>
             {products?.data?.map((p) => (
               <>
-                {p?.category_id === id2 ? (
+                {p?.userEmail === session?.user?.email &&
+                p?.category_id === id2 ? (
                   <div className="flex bg-gray-300  rounded-lg p-2">
                     <div className="flex items-center p-5">
                       <div>
@@ -198,7 +210,7 @@ const PcBuilder = () => {
                     </div>
                     <button
                       onClick={() => handleDelete(p?._id)}
-                      className="btn btn-ghost bg-slate-500"
+                      className="btn btn-ghost bg-slate-500 ml-10"
                     >
                       x
                     </button>
@@ -211,14 +223,17 @@ const PcBuilder = () => {
           </div>
           <div>
             <Link href={foundPrice2 ? "" : choseLink2}>
-              <button className="btn btn-outline" disabled={foundPrice2}>
+              <button
+                className="btn btn-outline lg:ml-80 mt-5 lg:mt-0"
+                disabled={foundPrice2}
+              >
                 Chose
               </button>
             </Link>
           </div>
         </div>
-        <div className="border p-8 rounded-lg bg-white flex items-center justify-between  mb-5">
-          <div>
+        <div className="border p-8 rounded-lg bg-white grid lg:grid-cols-3 grid-cols-1 w-11/12 lg:w-full ml-4 lg:ml-0 items-center mb-5">
+          <div className="mb-3 lg:mb-0">
             <p>Power Supply Unit</p>
             <img
               className="shadow-md rounded-md"
@@ -228,7 +243,8 @@ const PcBuilder = () => {
           <div>
             {products?.data?.map((p) => (
               <>
-                {p?.category_id === id3 ? (
+                {p?.userEmail === session?.user?.email &&
+                p?.category_id === id3 ? (
                   <div className="flex bg-gray-300  rounded-lg p-2">
                     <div className="flex items-center p-5">
                       <div>
@@ -241,7 +257,7 @@ const PcBuilder = () => {
                     </div>
                     <button
                       onClick={() => handleDelete(p?._id)}
-                      className="btn btn-ghost bg-slate-500"
+                      className="btn btn-ghost bg-slate-500 ml-10"
                     >
                       x
                     </button>
@@ -254,14 +270,17 @@ const PcBuilder = () => {
           </div>
           <div>
             <Link href={foundPrice3 ? "" : choseLink3}>
-              <button className="btn btn-outline" disabled={foundPrice3}>
+              <button
+                className="btn btn-outline lg:ml-80 mt-5 lg:mt-0"
+                disabled={foundPrice3}
+              >
                 Chose
               </button>
             </Link>
           </div>
         </div>
-        <div className="border p-8 rounded-lg bg-white flex items-center justify-between  mb-5">
-          <div>
+        <div className="border p-8 rounded-lg bg-white grid lg:grid-cols-3 grid-cols-1 w-11/12 lg:w-full ml-4 lg:ml-0 items-center mb-5">
+          <div className="mb-3 lg:mb-0">
             <p>Storage Device</p>
             <img
               className="shadow-md rounded-md"
@@ -271,7 +290,8 @@ const PcBuilder = () => {
           <div>
             {products?.data?.map((p) => (
               <>
-                {p?.category_id === id4 ? (
+                {p?.userEmail === session?.user?.email &&
+                p?.category_id === id4 ? (
                   <div className="flex bg-gray-300  rounded-lg p-2">
                     <div className="flex items-center p-5">
                       <div>
@@ -284,7 +304,7 @@ const PcBuilder = () => {
                     </div>
                     <button
                       onClick={() => handleDelete(p?._id)}
-                      className="btn btn-ghost bg-slate-500"
+                      className="btn btn-ghost bg-slate-500 ml-10"
                     >
                       x
                     </button>
@@ -297,14 +317,17 @@ const PcBuilder = () => {
           </div>
           <div>
             <Link href={foundPrice4 ? "" : choseLink4}>
-              <button className="btn btn-outline" disabled={foundPrice4}>
+              <button
+                className="btn btn-outline lg:ml-80 mt-5 lg:mt-0"
+                disabled={foundPrice4}
+              >
                 Chose
               </button>
             </Link>
           </div>
         </div>
-        <div className="border p-8 rounded-lg bg-white flex items-center justify-between  mb-5">
-          <div>
+        <div className="border p-8 rounded-lg bg-white grid lg:grid-cols-3 grid-cols-1 w-11/12 lg:w-full ml-4 lg:ml-0 items-center mb-5">
+          <div className="mb-3 lg:mb-0">
             <p>Monitor</p>
             <img
               className="shadow-md rounded-md"
@@ -314,7 +337,8 @@ const PcBuilder = () => {
           <div>
             {products?.data?.map((p) => (
               <>
-                {p?.category_id === id5 ? (
+                {p?.userEmail === session?.user?.email &&
+                p?.category_id === id5 ? (
                   <div className="flex bg-gray-300  rounded-lg p-2">
                     <div className="flex items-center p-5">
                       <div>
@@ -327,7 +351,7 @@ const PcBuilder = () => {
                     </div>
                     <button
                       onClick={() => handleDelete(p?._id)}
-                      className="btn btn-ghost bg-slate-500"
+                      className="btn btn-ghost bg-slate-500 ml-10"
                     >
                       x
                     </button>
@@ -340,14 +364,17 @@ const PcBuilder = () => {
           </div>
           <div>
             <Link href={foundPrice5 ? "" : choseLink5}>
-              <button className="btn btn-outline" disabled={foundPrice5}>
+              <button
+                className="btn btn-outline lg:ml-80 mt-5 lg:mt-0"
+                disabled={foundPrice5}
+              >
                 Chose
               </button>
             </Link>
           </div>
         </div>
-        <div className="border p-8 rounded-lg bg-white flex items-center justify-between  mb-5">
-          <div>
+        <div className="border p-8 rounded-lg bg-white grid lg:grid-cols-3 grid-cols-1 w-11/12 lg:w-full ml-4 lg:ml-0 items-center mb-5">
+          <div className="mb-3 lg:mb-0">
             <p>Other</p>
             <img
               className="shadow-md rounded-md"
@@ -357,7 +384,8 @@ const PcBuilder = () => {
           <div>
             {products?.data?.map((p) => (
               <>
-                {p?.category_id === id6 ? (
+                {p?.userEmail === session?.user?.email &&
+                p?.category_id === id6 ? (
                   <div className="flex bg-gray-300  rounded-lg p-2">
                     <div className="flex items-center p-5">
                       <div>
@@ -370,7 +398,7 @@ const PcBuilder = () => {
                     </div>
                     <button
                       onClick={() => handleDelete(p?._id)}
-                      className="btn btn-ghost bg-slate-500"
+                      className="btn btn-ghost bg-slate-500 ml-10"
                     >
                       x
                     </button>
@@ -383,7 +411,10 @@ const PcBuilder = () => {
           </div>
           <div>
             <Link href={foundPrice6 ? "" : choseLink6}>
-              <button className="btn btn-outline" disabled={foundPrice6}>
+              <button
+                className="btn btn-outline lg:ml-80 mt-5 lg:mt-0"
+                disabled={foundPrice6}
+              >
                 Chose
               </button>
             </Link>

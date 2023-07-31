@@ -9,3 +9,10 @@
 @tailwind components;
 @tailwind utilities;
 
+.st{
+  width: 450px;
+}
+.f-card{
+  width: 90%;
+  margin-left: 5%;
+}

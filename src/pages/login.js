@@ -58,13 +58,13 @@ const LoginPage = () => {
           </div>
         </div>
       </div> */}
-      <div className="mt-48 p-14 bg-black  rounded-2xl">
+      <div className="mt-48 p-14 bg-black rounded-2xl w-80">
         <div className="form-control mt-6">
           <button
-            className="btn btn-info text-2xl "
+            className="btn btn-info text-2xl h-28 lg:h-28 w-full "
             onClick={() =>
               signIn("github", {
-                callbackUrl: "http://localhost:3000/",
+                callbackUrl: "/",
               })
             }
           >

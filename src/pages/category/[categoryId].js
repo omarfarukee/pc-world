@@ -3,6 +3,7 @@ import RootLayout from "@/components/RootLayout";
 import Link from "next/link";
 import React from "react";
 import { FaStar } from "react-icons/fa";
+import { global } from "styled-jsx/css";
 
 const CategoryPage = ({ category }) => {
   return (
@@ -11,7 +12,7 @@ const CategoryPage = ({ category }) => {
         {category?.map((cat) => (
           <div
             key={cat?._id}
-            className="card w-96 bg-base-100 shadow-xl border transition duration-300 transform hover:scale-105 hover:shadow-black"
+            className="card lg:ml-0 lg:w-96 mb-10 f-card bg-base-100 shadow-xl border transition duration-300 transform hover:scale-105 hover:shadow-black"
           >
             <figure>
               <img className="h-60 w-full" src={cat?.image} alt="" />
@@ -45,7 +46,7 @@ CategoryPage.getLayout = function getLayout(page) {
 };
 
 export const getStaticPaths = async () => {
-  const res = await fetch(`http://localhost:5000/category`);
+  const res = await fetch(`https://pc-world-server.vercel.app/category`);
   const categories = await res.json();
 
   if (!Array.isArray(categories)) {
@@ -68,7 +69,7 @@ export const getStaticPaths = async () => {
 export const getStaticProps = async (context) => {
   const { params } = context;
   const res = await fetch(
-    `http://localhost:5000/category/${params?.categoryId}`
+    `https://pc-world-server.vercel.app/category/${params?.categoryId}`
   );
   const data = await res.json();
   // console.log(data);

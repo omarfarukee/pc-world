@@ -2,6 +2,7 @@
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { FaStar } from "react-icons/fa";
+import { global } from "styled-jsx/css";
 
 const FeaturedProducts = ({ allProducts }) => {
   const [randomProducts, setRandomProducts] = useState([]);
@@ -27,7 +28,7 @@ const FeaturedProducts = ({ allProducts }) => {
         {randomProducts?.map((product) => (
           <div
             key={product?._id}
-            className="card w-96 bg-base-100 shadow-xl border transition duration-300 transform hover:scale-105 hover:shadow-black"
+            className="card lg:ml-0 lg:w-96 f-card  bg-base-100 shadow-xl border transition duration-300 transform hover:scale-105 hover:shadow-black"
           >
             <figure>
               <img className="h-60 w-full" src={product?.image} alt="" />

@@ -6,6 +6,7 @@ import { FaBeer, FaUserCircle } from "react-icons/fa";
 import { useSession, signOut } from "next-auth/react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import auth from "@/firebase/firebase.auth";
+import { global } from "styled-jsx/css";
 const RootLayout = ({ children }) => {
   const { data: session } = useSession();
   // console.log(session?.user);
@@ -17,15 +18,17 @@ const RootLayout = ({ children }) => {
   // console.log(data?.data);
 
   return (
-    <div className="flex justify-center">
+    <div className="flex justify-center border">
       <div className="lg:w-11/12 w-full">
         <div className="navbar bg-black rounded border">
           <div className="">
             <Link href="/pcBuilder">
-              <button className="btn btn-ghost text-white">PC_BUILD</button>
+              <button className="btn btn-ghost sm:block hidden text-white">
+                PC_BUILD
+              </button>
             </Link>
           </div>
-          <div className="navbar-start">
+          <div className="navbar-start border st">
             <div className="dropdown">
               <div className="dropdown dropdown-hover ">
                 <label tabIndex={0} className="btn m-1 text-white">
@@ -50,15 +53,16 @@ const RootLayout = ({ children }) => {
               </div>
             </div>
           </div>
+
           <Link href="/">
-            <div className="navbar-center">
-              <p className="btn btn-ghost normal-case text-xl mr-20">
+            <div className="navbar-center border w-20 mr-5 hidden lg:block">
+              <p className="btn btn-ghost normal-case text-xl mr-20 text-white">
                 PC_WORLD
               </p>
             </div>
           </Link>
           <div className="navbar-end border">
-            <div className="dropdown dropdown-bottom dropdown-hover dropdown-end border">
+            <div className="dropdown dropdown-bottom dropdown-hover dropdown-end ">
               <label tabIndex={0} className="btn m-1 btn-circle">
                 {session?.user?.image ? (
                   <img className="rounded-full " src={session?.user?.image} />
@@ -70,6 +74,17 @@ const RootLayout = ({ children }) => {
                 tabIndex={0}
                 className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52 border"
               >
+                <Link href="/">
+                  <li className="bg-black rounded-lg text-white mb-2 lg:hidden block">
+                    <p className="">Home</p>
+                  </li>
+                </Link>
+                <Link href="/pcBuilder">
+                  <li className="bg-black rounded-lg text-white mb-2 lg:hidden block">
+                    <p className="">pc_build</p>
+                  </li>
+                </Link>
+
                 {!session?.user | !user?.email ? (
                   <>
                     <Link href="/login">
