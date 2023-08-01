@@ -3,6 +3,8 @@
 import { useGetCategoryQuery } from "@/redux/api/api";
 import Link from "next/link";
 import { FaBeer, FaUserCircle } from "react-icons/fa";
+import { AiFillCaretDown } from "react-icons/ai";
+import { BiWorld } from "react-icons/bi";
 import { useSession, signOut } from "next-auth/react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import auth from "@/firebase/firebase.auth";
@@ -32,7 +34,7 @@ const RootLayout = ({ children }) => {
             <div className="dropdown">
               <div className="dropdown dropdown-hover ">
                 <label tabIndex={0} className="btn m-1 text-white">
-                  Categories<FaBeer></FaBeer>
+                  Categories<AiFillCaretDown></AiFillCaretDown>
                 </label>
                 <ul
                   tabIndex={0}
@@ -57,7 +59,7 @@ const RootLayout = ({ children }) => {
           <Link href="/">
             <div className="navbar-center ml-16 hidden lg:block">
               <p className="btn btn-ghost normal-case text-xl  text-white">
-                PC_WORLD
+                PC_WORLD<BiWorld></BiWorld>
               </p>
             </div>
           </Link>
@@ -85,7 +87,7 @@ const RootLayout = ({ children }) => {
                   </li>
                 </Link>
 
-                {!session?.user | !user?.email ? (
+                {!session?.user ? (
                   <>
                     <Link href="/login">
                       <li className="bg-black rounded-lg text-white">

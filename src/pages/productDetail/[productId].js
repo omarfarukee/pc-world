@@ -38,30 +38,30 @@ ProductDetail.getLayout = function getLayout(page) {
   return <RootLayout>{page}</RootLayout>;
 };
 
-export const getStaticPaths = async () => {
-  const res = await fetch(
-    `https://pc-world-server.vercel.app/featuredProducts`
-  );
-  const products = await res.json();
+// export const getStaticPaths = async () => {
+//   const res = await fetch(
+//     `https://pc-world-server.vercel.app/featuredProducts`
+//   );
+//   const products = await res.json();
 
-  if (!Array.isArray(products)) {
-    return {
-      paths: [],
-      fallback: false,
-    };
-  }
+//   if (!Array.isArray(products)) {
+//     return {
+//       paths: [],
+//       fallback: false,
+//     };
+//   }
 
-  const paths = products.map((product) => ({
-    params: { productId: product._id },
-  }));
+//   const paths = products.map((product) => ({
+//     params: { productId: product._id },
+//   }));
 
-  return {
-    paths,
-    fallback: false,
-  };
-};
+//   return {
+//     paths,
+//     fallback: false,
+//   };
+// };
 
-export const getStaticProps = async (context) => {
+export const getServerSideProps = async (context) => {
   const { params } = context;
   const res = await fetch(
     `https://pc-world-server.vercel.app/featuredProducts/${params?.productId}`

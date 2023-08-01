@@ -111,7 +111,7 @@ const PcBuilder = () => {
                       </div>
                       <div>
                         <p>{p?.productName}</p>
-                        <p>Price- {p?.price} BDT</p>
+                        <p>Price- {p?.price}৳</p>
                       </div>
                     </div>
                     <button
@@ -158,7 +158,7 @@ const PcBuilder = () => {
                       </div>
                       <div>
                         <p>{p?.productName}</p>
-                        <p>Price- {p?.price} BDT</p>
+                        <p>Price- {p?.price}৳</p>
                       </div>
                     </div>
                     <button
@@ -205,7 +205,7 @@ const PcBuilder = () => {
                       </div>
                       <div>
                         <p>{p?.productName}</p>
-                        <p>Price- {p?.price} BDT</p>
+                        <p>Price- {p?.price}৳</p>
                       </div>
                     </div>
                     <button
@@ -252,7 +252,7 @@ const PcBuilder = () => {
                       </div>
                       <div>
                         <p>{p?.productName}</p>
-                        <p>Price- {p?.price} BDT</p>
+                        <p>Price- {p?.price}৳</p>
                       </div>
                     </div>
                     <button
@@ -299,7 +299,7 @@ const PcBuilder = () => {
                       </div>
                       <div>
                         <p>{p?.productName}</p>
-                        <p>Price- {p?.price} BDT</p>
+                        <p>Price- {p?.price}৳</p>
                       </div>
                     </div>
                     <button
@@ -346,7 +346,7 @@ const PcBuilder = () => {
                       </div>
                       <div>
                         <p>{p?.productName}</p>
-                        <p>Price- {p?.price} BDT</p>
+                        <p>Price- {p?.price}৳</p>
                       </div>
                     </div>
                     <button
@@ -393,7 +393,7 @@ const PcBuilder = () => {
                       </div>
                       <div>
                         <p>{p?.productName}</p>
-                        <p>Price- {p?.price} BDT</p>
+                        <p>Price- {p?.price}৳</p>
                       </div>
                     </div>
                     <button

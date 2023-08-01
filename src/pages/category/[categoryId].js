@@ -45,28 +45,28 @@ CategoryPage.getLayout = function getLayout(page) {
   return <RootLayout>{page}</RootLayout>;
 };
 
-export const getStaticPaths = async () => {
-  const res = await fetch(`https://pc-world-server.vercel.app/category`);
-  const categories = await res.json();
+// export const getStaticPaths = async () => {
+//   const res = await fetch(`https://pc-world-server.vercel.app/category`);
+//   const categories = await res.json();
 
-  if (!Array.isArray(categories)) {
-    return {
-      paths: [],
-      fallback: false,
-    };
-  }
+//   // if (!Array.isArray(categories)) {
+//   //   return {
+//   //     paths: [],
+//   //     fallback: false,
+//   //   };
+//   // }
 
-  const paths = categories.map((category) => ({
-    params: { categoryId: category.category_id },
-  }));
+//   const paths = categories?.data?.map((category) => ({
+//     params: { categoryId: category.category_id },
+//   }));
 
-  return {
-    paths,
-    fallback: false,
-  };
-};
+//   return {
+//     paths,
+//     fallback: false,
+//   };
+// };
 
-export const getStaticProps = async (context) => {
+export const getServerSideProps = async (context) => {
   const { params } = context;
   const res = await fetch(
     `https://pc-world-server.vercel.app/category/${params?.categoryId}`
